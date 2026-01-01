@@ -1,31 +1,72 @@
-# Axiom
+# Le Langage de Programmation
 
-## Axiom is a simple c-like programming langage. The only big difference is its JavaScript's lyke dynamic typing for **ONLY** values (like a string can be implicitly converted to a double, but a vec3 for example (or any type excepted 'value') **can't** be converted implicitly converted to an other type). 
+## Un langage de programmation simple de type C. La principale différence est son typage dynamique similaire à JavaScript pour les valeurs (une chaîne peut être implicitement convertie en nombre, mais des types plus complexes ne peuvent **pas** être convertis implicitement).
 
 ### Expressions:
-- 1+1 will be automaticly converted to **true** for example, like any non-null values if needed.
-- {item0, item1, ...} for declaring an array, an array can contain an other.
-- (item0, item1, ...} for declaring objects from structures.
+- Les expressions arithmétiques et logiques: `1+1`, `a && b`, `x || y`
+- Opérateurs de comparaison: `==`, `!=`, `<`, `>`, `<=`, `>=`
+- Opérateurs arithmétiques: `+`, `-`, `*`, `/`, `%`, `**` (puissance)
+- Opérateurs de décalage: `<<`, `>>`
+- Opérateur logique NOT: `!`
+- `{item0, item1, ...}` pour déclarer un tableau (array)
+- `(item0, item1, ...)` pour déclarer un tuple
+- Les chaînes de caractères: `"texte"` ou `'texte'`
+- Accès aux éléments: `identifiant[index]` ou `identifiant[index0][index1]...`
+- Accès aux membres: `objet.membre` ou `objet.membre.sous_membre`
+- Appels de fonction: `fonction(arg1, arg2, ...)`
 
-### Object declaration:
-- {type} {name};
-- {type} {name} = {expr};
+### Déclaration d'objet:
+- `{type} {nom};`
+- `{type} {nom} = {expr};`
+- `{nom} = {expr};` (assignation à un objet existant)
+- `{nom} {opérateur_assignation} {expr};` où opérateur_assignation peut être `=`, `+=`, `-=`, etc.
 
-### Array of objects declaration:
-- {type} {name}[{dim0}][{dim1}]...;
-- {type} {name}[{dim0}][{dim1}]... = {expr};
-
-### Loops:
+### Structures de contrôle:
 #### If:
-- if (expr) {statement list}
-- if (expr) {statement list} else {statement list}
+```
+if (expr) {
+    // liste d'instructions
+}
+```
+```
+if (expr) {
+    // liste d'instructions
+} else {
+    // liste d'instructions
+}
+```
 
 #### While:
-- while (expr) {statement list}
+```
+while (expr) {
+    // liste d'instructions
+}
+```
 
-### Declaring a struct:
+### Déclaration de fonction:
+```
+fun {type_retour} {nom}({type} {param1}, {type} {param2}, ...) {
+    // liste d'instructions
+}
+```
 
-struct {name}[({parent})] {statement list}
-#### statement list can contains:
-- Objects declaration
-- Functions
+### Blocs:
+- Les blocs peuvent être créés avec `{ }` pour organiser le code
+
+### Types de tokens:
+- **Keyword** (mots-clés): `if`, `else`, `while`, `fun`
+- **Identifier** (identifiants): noms de variables, fonctions, types
+- **Operator** (opérateurs): `+`, `-`, `*`, `/`, `%`, `**`, `==`, `!=`, `<`, `>`, `<=`, `>=`, `&&`, `||`, `!`, `<<`, `>>`, `=`, etc.
+- **Separator** (séparateurs): `(`, `)`, `[`, `]`, `{`, `}`, `,`, `;`
+- **Number** (nombres): littéraux numériques incluant les décimaux
+- **String** (chaînes): littéraux de texte entre `"` ou `'`
+
+### Priorité des opérateurs (du plus faible au plus fort):
+1. `||` (OR logique)
+2. `&&` (AND logique)
+3. `==`, `!=`, `<`, `>`, `<=`, `>=` (comparaisons)
+4. `+`, `-` (addition, soustraction)
+5. `<<`, `>>` (décalages)
+6. `*`, `/`, `%` (multiplication, division, modulo)
+7. `**` (puissance)
+8. `!` (NOT logique)
